@@ -1,4 +1,11 @@
+import CalendarApp from './components/CalendarApp';
+import './components/CalendarApp.css';
+
 const App = () => {
-  return <div>Matcha'm</div>;
+  return (
+    <div>
+      <CalendarApp />
+    </div>
+  );
 };
 export default App;
