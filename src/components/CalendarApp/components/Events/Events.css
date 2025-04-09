@@ -12,3 +12,10 @@
   row-gap: 10px;
   margin-bottom: 20px;
 }
+
+.selected-date {
+  font-size: 2rem;
+  color: #78879e;
+  margin-bottom: 2rem;
+  text-align: center;
+}

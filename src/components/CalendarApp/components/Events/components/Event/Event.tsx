@@ -1,6 +1,8 @@
 import './Event.css';
-import { MONTHS_OF_YEAR } from '../../../../../../constants/calendarConstants';
-import { Event as EventType } from '../../../../../../types/calendarTypes';
+import {
+  Event as EventType,
+  RangeEnum,
+} from '../../../../../../types/calendarTypes';
 
 interface Props {
   event: EventType;
@@ -8,13 +10,21 @@ interface Props {
   handleRemoveEvent: (eventId: string) => void;
 }
 const Event = ({ event, handleSetEditingEvent, handleRemoveEvent }: Props) => {
+  let eventBackground;
+
+  if (event.range === RangeEnum.Morning) {
+    eventBackground = 'morning';
+  } else if (event.range === RangeEnum.Afternoon) {
+    eventBackground = 'afternoon';
+  } else if (event.range === RangeEnum.Night) {
+    eventBackground = 'night';
+  } else {
+    eventBackground = '';
+  }
+
   return (
-    <div className="event">
+    <div className={`event ${eventBackground}`}>
       <div className="event-date-wrapper">
-        <div className="event-date">
-          {`${MONTHS_OF_YEAR[event.date.getMonth()]} ${event.date.getDate()},
-          ${event.date.getFullYear()}`}
-        </div>
         <div className="event-range">{event.range}</div>
       </div>
       <div className="event-title">{event.title}</div>

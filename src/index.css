@@ -20,3 +20,13 @@ html {
   place-items: center;
   perspective: 100rem;
 }
+
+.morning {
+  background-color: rgba(255, 194, 226, 0.4);
+}
+.afternoon {
+  background-color: rgba(187, 186, 255, 0.4);
+}
+.night {
+  background-color: rgba(124, 139, 255, 0.4);
+}
