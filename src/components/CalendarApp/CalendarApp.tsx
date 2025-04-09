@@ -25,8 +25,10 @@ const CalendarApp = () => {
     handleDayClick,
     setEventRange,
     setEventTitle,
-    handleAddEvent,
+    handleSubmitEvent,
     closeEventPopup,
+    handleSetEditingEvent,
+    handleRemoveEvent,
   } = useEvents(currentYear, currentMonth, selectedDate, setSelectedDate);
 
   return (
@@ -48,9 +50,11 @@ const CalendarApp = () => {
         storedEvents={storedEvents}
         selectedDate={selectedDate}
         closeEventPopup={closeEventPopup}
-        handleAddEvent={handleAddEvent}
+        handleSubmitEvent={handleSubmitEvent}
         setEventRange={setEventRange}
         setEventTitle={setEventTitle}
+        handleSetEditingEvent={handleSetEditingEvent}
+        handleRemoveEvent={handleRemoveEvent}
       />
     </div>
   );

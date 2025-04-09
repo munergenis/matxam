@@ -10,9 +10,11 @@ export const useEvents = (
   setSelectedDate: (date: Date) => void
 ) => {
   const [showEventPopup, setShowEventPopup] = useState(false);
+  // TODO GET request to backend (maybe using a useEffect)
   const [storedEvents, setStoredEvents] = useState<Event[]>(events);
   const [eventRange, setEventRange] = useState(RangeEnum.Morning);
   const [eventTitle, setEventTitle] = useState('');
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
   const closeEventPopup = () => {
     setShowEventPopup(false);
@@ -27,21 +29,53 @@ export const useEvents = (
       setShowEventPopup(true);
       setEventTitle('');
       setEventRange(RangeEnum.Morning);
+      setEditingEvent(null);
     }
   };
 
-  const handleAddEvent = () => {
-    // TODO: get id from backend
+  const handleSubmitEvent = () => {
+    // TODO: when handling data with backend we don't have id when event is new
     const newEvent = {
-      id: crypto.randomUUID(),
+      id: editingEvent ? editingEvent.id : crypto.randomUUID(),
       date: selectedDate,
       range: eventRange,
       title: eventTitle,
     };
-    setStoredEvents((pEvents) => [...pEvents, newEvent]);
+
+    if (editingEvent) {
+      // TODO PATCH request to backend
+      setStoredEvents((pEvents) =>
+        pEvents.map((ev) => (ev.id === newEvent.id ? newEvent : ev))
+      );
+    } else {
+      // TODO POST request to backend
+      setStoredEvents((pEvents) => [...pEvents, newEvent]);
+    }
+
     setEventTitle('');
     setEventRange(RangeEnum.Morning);
     setShowEventPopup(false);
+  };
+
+  const handleSetEditingEvent = (event: Event | null) => {
+    if (event) {
+      setEditingEvent(event);
+      setShowEventPopup(true);
+      setEventRange(event.range);
+      setEventTitle(event.title);
+      setSelectedDate(event.date);
+    } else {
+      setEditingEvent(null);
+      setShowEventPopup(false);
+      setEventRange(RangeEnum.Morning);
+      setEventTitle('');
+      setSelectedDate(new Date());
+    }
+  };
+
+  const handleRemoveEvent = (eventId: string) => {
+    // TODO DELETE request to backend
+    setStoredEvents((pEvents) => pEvents.filter((e) => e.id !== eventId));
   };
 
   return {
@@ -52,7 +86,9 @@ export const useEvents = (
     handleDayClick,
     setEventRange,
     setEventTitle,
-    handleAddEvent,
+    handleSubmitEvent,
     closeEventPopup,
+    handleSetEditingEvent,
+    handleRemoveEvent,
   };
 };

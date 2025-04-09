@@ -11,8 +11,10 @@ interface Props {
   selectedDate: Date;
   setEventRange: (range: RangeEnum) => void;
   setEventTitle: (title: string) => void;
-  handleAddEvent: () => void;
+  handleSubmitEvent: () => void;
   closeEventPopup: () => void;
+  handleSetEditingEvent: (event: EventType | null) => void;
+  handleRemoveEvent: (eventId: string) => void;
 }
 const Events = ({
   showEventPopup,
@@ -22,8 +24,10 @@ const Events = ({
   selectedDate,
   setEventRange,
   setEventTitle,
-  handleAddEvent,
+  handleSubmitEvent,
   closeEventPopup,
+  handleSetEditingEvent,
+  handleRemoveEvent,
 }: Props) => {
   return (
     <div className="events">
@@ -34,7 +38,7 @@ const Events = ({
           selectedDate={selectedDate}
           setEventRange={setEventRange}
           setEventTitle={setEventTitle}
-          handleAddEvent={handleAddEvent}
+          handleSubmitEvent={handleSubmitEvent}
           closeEventPopup={closeEventPopup}
         />
       )}
@@ -43,6 +47,8 @@ const Events = ({
         <Event
           key={event.id}
           event={event}
+          handleSetEditingEvent={handleSetEditingEvent}
+          handleRemoveEvent={handleRemoveEvent}
         />
       ))}
     </div>

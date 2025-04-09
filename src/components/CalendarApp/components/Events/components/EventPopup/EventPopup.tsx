@@ -8,7 +8,7 @@ interface Props {
   selectedDate: Date;
   setEventRange: (range: RangeEnum) => void;
   setEventTitle: (title: string) => void;
-  handleAddEvent: () => void;
+  handleSubmitEvent: () => void;
   closeEventPopup: () => void;
 }
 const EventPopup = ({
@@ -17,7 +17,7 @@ const EventPopup = ({
   selectedDate,
   setEventRange,
   setEventTitle,
-  handleAddEvent,
+  handleSubmitEvent,
   closeEventPopup,
 }: Props) => {
   return (
@@ -53,7 +53,7 @@ const EventPopup = ({
 
       <button
         className="event-popup-btn"
-        onClick={handleAddEvent}
+        onClick={handleSubmitEvent}
       >
         Add event
       </button>

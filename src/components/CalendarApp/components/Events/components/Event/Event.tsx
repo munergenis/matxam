@@ -4,8 +4,10 @@ import { Event as EventType } from '../../../../../../types/calendarTypes';
 
 interface Props {
   event: EventType;
+  handleSetEditingEvent: (event: EventType | null) => void;
+  handleRemoveEvent: (eventId: string) => void;
 }
-const Event = ({ event }: Props) => {
+const Event = ({ event, handleSetEditingEvent, handleRemoveEvent }: Props) => {
   return (
     <div className="event">
       <div className="event-date-wrapper">
@@ -18,8 +20,8 @@ const Event = ({ event }: Props) => {
       <div className="event-title">{event.title}</div>
       <div className="event-buttons">
         {/* TODO change for real icons */}
-        <button>✏️</button>
-        <button>X</button>
+        <button onClick={() => handleSetEditingEvent(event)}>✏️</button>
+        <button onClick={() => handleRemoveEvent(event.id)}>X</button>
       </div>
     </div>
   );
