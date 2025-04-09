@@ -4,6 +4,7 @@ import {
   MONTHS_OF_YEAR,
 } from '../../../../constants/calendarConstants';
 import { isSameDay } from '../../../../utils/dates';
+import { Event, RangeEnum } from '../../../../types/calendarTypes';
 
 interface Props {
   currentYear: number;
@@ -12,6 +13,7 @@ interface Props {
   daysInMonth: number;
   currentDate: Date;
   selectedDate: Date;
+  monthEvents: Event[];
   handlePrevMonth: () => void;
   handleNextMonth: () => void;
   handleDayClick: (day: number) => void;
@@ -23,6 +25,7 @@ const Calendar = ({
   daysInMonth,
   currentDate,
   selectedDate,
+  monthEvents,
   handlePrevMonth,
   handleNextMonth,
   handleDayClick,
@@ -49,26 +52,57 @@ const Calendar = ({
 
       <div className="days">
         {[...Array(firstDayOfMonth).keys()].map((_, i) => (
-          <span key={`empty-${i}`} />
+          <div>
+            <span key={`empty-${i}`} />
+          </div>
         ))}
         {[...Array(daysInMonth).keys()].map((day) => (
-          <span
-            className={`${
-              isSameDay(
-                currentDate,
-                new Date(currentYear, currentMonth, day + 1)
-              ) && 'current-day'
-            } ${
-              isSameDay(
-                selectedDate,
-                new Date(currentYear, currentMonth, day + 1)
-              ) && 'selected-day'
-            }`}
+          <div
             key={day + 1}
             onClick={() => handleDayClick(day + 1)}
           >
-            {day + 1}
-          </span>
+            <span
+              className={`${
+                isSameDay(
+                  currentDate,
+                  new Date(currentYear, currentMonth, day + 1)
+                ) && 'current-day'
+              } ${
+                isSameDay(
+                  selectedDate,
+                  new Date(currentYear, currentMonth, day + 1)
+                ) && 'selected-day'
+              }`}
+            >
+              {day + 1}
+            </span>
+            <div
+              className={`${
+                monthEvents.find(
+                  (e) =>
+                    e.date.getDate() === day + 1 &&
+                    e.range === RangeEnum.Morning
+                ) && 'morning'
+              } day-range`}
+            ></div>
+            <div
+              className={`${
+                monthEvents.find(
+                  (e) =>
+                    e.date.getDate() === day + 1 &&
+                    e.range === RangeEnum.Afternoon
+                ) && 'afternoon'
+              } day-range`}
+            ></div>
+            <div
+              className={`${
+                monthEvents.find(
+                  (e) =>
+                    e.date.getDate() === day + 1 && e.range === RangeEnum.Night
+                ) && 'night'
+              } day-range`}
+            ></div>
+          </div>
         ))}
       </div>
     </div>

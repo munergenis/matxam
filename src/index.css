@@ -22,11 +22,11 @@ html {
 }
 
 .morning {
-  background-color: rgba(255, 194, 226, 0.4);
+  background-color: rgba(255, 194, 226, 0.6);
 }
 .afternoon {
-  background-color: rgba(187, 186, 255, 0.4);
+  background-color: rgba(187, 186, 255, 0.6);
 }
 .night {
-  background-color: rgba(124, 139, 255, 0.4);
+  background-color: rgba(124, 139, 255, 0.6);
 }

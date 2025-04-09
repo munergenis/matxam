@@ -22,6 +22,7 @@ const CalendarApp = () => {
     eventRange,
     eventTitle,
     storedEvents,
+    monthEvents,
     handleDayClick,
     setEventTitle,
     handleCreateEvent,
@@ -32,31 +33,35 @@ const CalendarApp = () => {
   } = useEvents(currentYear, currentMonth, selectedDate, setSelectedDate);
 
   return (
-    <div className="calendar-app">
-      <Calendar
-        currentDate={currentDate}
-        currentMonth={currentMonth}
-        currentYear={currentYear}
-        daysInMonth={daysInMonth}
-        firstDayOfMonth={firstDayOfMonth}
-        selectedDate={selectedDate}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
-        handleDayClick={handleDayClick}
-      />
-      <Events
-        showEventPopup={showEventPopup}
-        eventRange={eventRange}
-        eventTitle={eventTitle}
-        storedEvents={storedEvents}
-        selectedDate={selectedDate}
-        closeEventPopup={closeEventPopup}
-        handleCreateEvent={handleCreateEvent}
-        handleSubmitEvent={handleSubmitEvent}
-        setEventTitle={setEventTitle}
-        handleSetEditingEvent={handleSetEditingEvent}
-        handleRemoveEvent={handleRemoveEvent}
-      />
+    <div>
+      <div className="tabs"></div>
+      <div className="calendar-app">
+        <Calendar
+          currentDate={currentDate}
+          currentMonth={currentMonth}
+          currentYear={currentYear}
+          daysInMonth={daysInMonth}
+          firstDayOfMonth={firstDayOfMonth}
+          selectedDate={selectedDate}
+          monthEvents={monthEvents}
+          handlePrevMonth={handlePrevMonth}
+          handleNextMonth={handleNextMonth}
+          handleDayClick={handleDayClick}
+        />
+        <Events
+          showEventPopup={showEventPopup}
+          eventRange={eventRange}
+          eventTitle={eventTitle}
+          storedEvents={storedEvents}
+          selectedDate={selectedDate}
+          closeEventPopup={closeEventPopup}
+          handleCreateEvent={handleCreateEvent}
+          handleSubmitEvent={handleSubmitEvent}
+          setEventTitle={setEventTitle}
+          handleSetEditingEvent={handleSetEditingEvent}
+          handleRemoveEvent={handleRemoveEvent}
+        />
+      </div>
     </div>
   );
 };

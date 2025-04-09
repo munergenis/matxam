@@ -78,24 +78,23 @@ export const useEvents = (
     setStoredEvents((pEvents) => pEvents.filter((e) => e.id !== eventId));
   };
 
-  const filteredEvents = useMemo(() => {
-    const orderMap: Record<RangeEnum, number> = {
-      [RangeEnum.Morning]: 0,
-      [RangeEnum.Afternoon]: 1,
-      [RangeEnum.Night]: 2,
-    };
-
-    return storedEvents
-      .filter((event) => isSameDay(event.date, selectedDate))
-      .sort((a, b) => orderMap[a.range] - orderMap[b.range]);
+  const dailyEvents = useMemo(() => {
+    return storedEvents.filter((event) => isSameDay(event.date, selectedDate));
   }, [storedEvents, selectedDate]);
+
+  const monthEvents = useMemo(() => {
+    return storedEvents.filter(
+      (event) => event.date.getMonth() === currentMonth
+    );
+  }, [storedEvents, currentMonth]);
 
   return {
     showEventPopup,
     eventRange,
     eventTitle,
-    // TODO: replace storedEvents for filteredEvents
-    storedEvents: filteredEvents,
+    // TODO: replace storedEvents for dailyEvents
+    storedEvents: dailyEvents,
+    monthEvents,
     handleDayClick,
     setEventTitle,
     handleCreateEvent,
