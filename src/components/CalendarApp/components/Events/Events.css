@@ -4,3 +4,11 @@
   height: 100%;
   padding: 3rem 0;
 }
+
+.event-range-container {
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 20px;
+}

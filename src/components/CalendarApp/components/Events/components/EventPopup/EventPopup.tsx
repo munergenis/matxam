@@ -6,7 +6,6 @@ interface Props {
   eventRange: RangeEnum;
   eventTitle: string;
   selectedDate: Date;
-  setEventRange: (range: RangeEnum) => void;
   setEventTitle: (title: string) => void;
   handleSubmitEvent: () => void;
   closeEventPopup: () => void;
@@ -15,7 +14,6 @@ const EventPopup = ({
   eventRange,
   eventTitle,
   selectedDate,
-  setEventRange,
   setEventTitle,
   handleSubmitEvent,
   closeEventPopup,
@@ -28,7 +26,8 @@ const EventPopup = ({
 
       <div className="range-input">
         <div className="event-popup-range">Range</div>
-        <select
+        <div className="range">{eventRange}</div>
+        {/* <select
           className="range"
           name="range"
           value={eventRange}
@@ -37,7 +36,7 @@ const EventPopup = ({
           <option value={RangeEnum.Morning}>{RangeEnum.Morning}</option>
           <option value={RangeEnum.Afternoon}>{RangeEnum.Afternoon}</option>
           <option value={RangeEnum.Night}>{RangeEnum.Night}</option>
-        </select>
+        </select> */}
       </div>
 
       <input

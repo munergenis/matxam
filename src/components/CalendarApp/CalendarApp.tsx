@@ -23,8 +23,8 @@ const CalendarApp = () => {
     eventTitle,
     storedEvents,
     handleDayClick,
-    setEventRange,
     setEventTitle,
+    handleCreateEvent,
     handleSubmitEvent,
     closeEventPopup,
     handleSetEditingEvent,
@@ -51,8 +51,8 @@ const CalendarApp = () => {
         storedEvents={storedEvents}
         selectedDate={selectedDate}
         closeEventPopup={closeEventPopup}
+        handleCreateEvent={handleCreateEvent}
         handleSubmitEvent={handleSubmitEvent}
-        setEventRange={setEventRange}
         setEventTitle={setEventTitle}
         handleSetEditingEvent={handleSetEditingEvent}
         handleRemoveEvent={handleRemoveEvent}

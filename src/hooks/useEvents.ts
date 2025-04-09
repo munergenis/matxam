@@ -22,37 +22,15 @@ export const useEvents = (
 
   const handleDayClick = (day: number) => {
     const clickedDate = new Date(currentYear, currentMonth, day);
-    const today = new Date();
 
-    if (clickedDate >= today || isSameDay(clickedDate, today)) {
-      setSelectedDate(clickedDate);
-      /**
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       * TODO: usar esto en boton new Event
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       */
-      // setShowEventPopup(true);
-      // setEventTitle('');
-      // setEventRange(RangeEnum.Morning);
-      // setEditingEvent(null);
-    }
+    setSelectedDate(clickedDate);
+  };
+
+  const handleCreateEvent = (range: RangeEnum) => {
+    setShowEventPopup(true);
+    setEventTitle('');
+    setEventRange(range);
+    setEditingEvent(null);
   };
 
   const handleSubmitEvent = () => {
@@ -116,10 +94,11 @@ export const useEvents = (
     showEventPopup,
     eventRange,
     eventTitle,
+    // TODO: replace storedEvents for filteredEvents
     storedEvents: filteredEvents,
     handleDayClick,
-    setEventRange,
     setEventTitle,
+    handleCreateEvent,
     handleSubmitEvent,
     closeEventPopup,
     handleSetEditingEvent,

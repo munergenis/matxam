@@ -39,23 +39,16 @@
   letter-spacing: 0.1rem;
 }
 
-.range-input select {
-  background-color: transparent;
-  border: none;
+.range-input .range {
   border-top: 0.2rem solid #00a3ff;
   border-bottom: 0.2rem solid #00a3ff;
   color: #fff;
   width: clamp(7rem, 7cqi, 10rem);
   height: 3rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: clamp(1.2rem, 1.2cqi, 1.6rem);
-
-  /* Custom appearence */
-  appearance: none;
-  background: none;
-}
-.range-input select option {
-  color: black;
 }
 
 .event-popup .title {

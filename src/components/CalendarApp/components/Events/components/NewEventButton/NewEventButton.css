@@ -1,0 +1,12 @@
+.new-event-button {
+  width: 100%;
+  height: 7rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
