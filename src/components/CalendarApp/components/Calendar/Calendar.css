@@ -84,3 +84,9 @@
   border-radius: 50%;
   box-shadow: 0 0 1.5rem 1rem rgba(239, 144, 17, 0.3);
 }
+
+.selected-day {
+  background-color: #00a3ff;
+  border-radius: 50%;
+  /* box-shadow: 0 0 1.5rem 1rem rgba(239, 144, 17, 0.3); */
+}

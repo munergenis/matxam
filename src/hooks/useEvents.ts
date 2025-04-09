@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Event, RangeEnum } from '../types/calendarTypes';
 import { events } from '../data/events';
 import { isSameDay } from '../utils/dates';
@@ -26,10 +26,32 @@ export const useEvents = (
 
     if (clickedDate >= today || isSameDay(clickedDate, today)) {
       setSelectedDate(clickedDate);
-      setShowEventPopup(true);
-      setEventTitle('');
-      setEventRange(RangeEnum.Morning);
-      setEditingEvent(null);
+      /**
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       * TODO: usar esto en boton new Event
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       *
+       */
+      // setShowEventPopup(true);
+      // setEventTitle('');
+      // setEventRange(RangeEnum.Morning);
+      // setEditingEvent(null);
     }
   };
 
@@ -78,11 +100,23 @@ export const useEvents = (
     setStoredEvents((pEvents) => pEvents.filter((e) => e.id !== eventId));
   };
 
+  const filteredEvents = useMemo(() => {
+    const orderMap: Record<RangeEnum, number> = {
+      [RangeEnum.Morning]: 0,
+      [RangeEnum.Afternoon]: 1,
+      [RangeEnum.Night]: 2,
+    };
+
+    return storedEvents
+      .filter((event) => isSameDay(event.date, selectedDate))
+      .sort((a, b) => orderMap[a.range] - orderMap[b.range]);
+  }, [storedEvents, selectedDate]);
+
   return {
     showEventPopup,
     eventRange,
     eventTitle,
-    storedEvents,
+    storedEvents: filteredEvents,
     handleDayClick,
     setEventRange,
     setEventTitle,

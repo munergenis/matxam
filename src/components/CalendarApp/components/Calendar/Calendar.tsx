@@ -3,6 +3,7 @@ import {
   DAYS_OF_WEEK,
   MONTHS_OF_YEAR,
 } from '../../../../constants/calendarConstants';
+import { isSameDay } from '../../../../utils/dates';
 
 interface Props {
   currentYear: number;
@@ -10,6 +11,7 @@ interface Props {
   firstDayOfMonth: number;
   daysInMonth: number;
   currentDate: Date;
+  selectedDate: Date;
   handlePrevMonth: () => void;
   handleNextMonth: () => void;
   handleDayClick: (day: number) => void;
@@ -20,6 +22,7 @@ const Calendar = ({
   firstDayOfMonth,
   daysInMonth,
   currentDate,
+  selectedDate,
   handlePrevMonth,
   handleNextMonth,
   handleDayClick,
@@ -51,10 +54,15 @@ const Calendar = ({
         {[...Array(daysInMonth).keys()].map((day) => (
           <span
             className={`${
-              currentDate.getFullYear() === currentYear &&
-              currentDate.getMonth() === currentMonth &&
-              currentDate.getDate() === day + 1 &&
-              'current-day'
+              isSameDay(
+                currentDate,
+                new Date(currentYear, currentMonth, day + 1)
+              ) && 'current-day'
+            } ${
+              isSameDay(
+                selectedDate,
+                new Date(currentYear, currentMonth, day + 1)
+              ) && 'selected-day'
             }`}
             key={day + 1}
             onClick={() => handleDayClick(day + 1)}

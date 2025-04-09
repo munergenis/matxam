@@ -39,6 +39,7 @@ const CalendarApp = () => {
         currentYear={currentYear}
         daysInMonth={daysInMonth}
         firstDayOfMonth={firstDayOfMonth}
+        selectedDate={selectedDate}
         handlePrevMonth={handlePrevMonth}
         handleNextMonth={handleNextMonth}
         handleDayClick={handleDayClick}
