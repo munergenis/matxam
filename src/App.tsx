@@ -1,9 +1,10 @@
-import Content from './components/App/Content/Content';
-import Login from './components/Auth/Login/Login';
-import { Tab } from './types/calendarTypes';
+import CalendarApp from './components/App/CalendarEvents/CalendarApp';
+import Login from '@/components/Auth/Login/Login';
+import LogoutButton from '@/components/Auth/Logout/LogoutButton';
+import { Tab } from '@/types/calendarTypes';
 import Tabs from './components/App/Tabs/Tabs';
-import { tabs } from './data/tabs';
-import { useAuth } from './hooks/useAuth';
+import { tabs } from '@/data/tabs';
+import { useAuth } from '@/hooks/useAuth';
 import { useState } from 'react';
 
 const App = () => {
@@ -14,15 +15,15 @@ const App = () => {
     <div className="container">
       {currentUser ? (
         <div>
+          <LogoutButton logout={logout} />
           <Tabs
             tabs={tabs}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <Content
+          <CalendarApp
             currentUser={currentUser}
             activeTab={activeTab}
-            logout={logout}
           />
         </div>
       ) : (

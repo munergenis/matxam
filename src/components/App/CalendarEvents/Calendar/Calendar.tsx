@@ -1,10 +1,9 @@
 import './Calendar.css';
-import {
-  DAYS_OF_WEEK,
-  MONTHS_OF_YEAR,
-} from '../../../../../../../constants/calendarConstants';
-import { isSameDay } from '../../../../../../../utils/dates';
-import { Event, RangeEnum } from '../../../../../../../types/calendarTypes';
+
+import { DAYS_OF_WEEK, MONTHS_OF_YEAR } from '@/constants/calendarConstants';
+import { Event, RangeEnum } from '@/types/calendarTypes';
+
+import { isSameDay } from '@/utils/dates';
 
 interface Props {
   calendarName: string;

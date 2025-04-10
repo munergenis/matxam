@@ -1,9 +1,10 @@
 import './CalendarApp.css';
-import { useCalendar } from '../../../../../hooks/useCalendar';
-import { useEvents } from '../../../../../hooks/useEvents';
-import Calendar from './components/Calendar/Calendar';
-import Events from './components/Events/Events';
-import { Tab } from '../../../../../types/calendarTypes';
+
+import Calendar from './Calendar/Calendar';
+import Events from './Events/Events';
+import { Tab } from '@/types/calendarTypes';
+import { useCalendar } from '@/hooks/useCalendar';
+import { useEvents } from '@/hooks/useEvents';
 
 interface Props {
   currentUser: string;

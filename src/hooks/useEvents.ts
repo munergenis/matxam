@@ -1,7 +1,8 @@
+import { Event, RangeEnum } from '@/types/calendarTypes';
 import { useEffect, useMemo, useState } from 'react';
-import { Event, RangeEnum } from '../types/calendarTypes';
-import { events } from '../data/events';
-import { isSameDay } from '../utils/dates';
+
+import { events } from '@/data/events';
+import { isSameDay } from '@/utils/dates';
 
 export const useEvents = (
   users: string[],

@@ -1,8 +1,6 @@
 import './Event.css';
-import {
-  Event as EventType,
-  RangeEnum,
-} from '../../../../../../../../../types/calendarTypes';
+
+import { Event as EventType, RangeEnum } from '@/types/calendarTypes';
 
 interface Props {
   event: EventType;

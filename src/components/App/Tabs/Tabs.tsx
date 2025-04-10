@@ -1,4 +1,4 @@
-import { Tab } from '../../../types/calendarTypes';
+import { Tab } from '@/types/calendarTypes';
 
 interface Props {
   tabs: Tab[];

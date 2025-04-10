@@ -1,6 +1,7 @@
 import './EventPopup.css';
-import { RangeEnum } from '../../../../../../../../../types/calendarTypes';
-import { MONTHS_OF_YEAR } from '../../../../../../../../../constants/calendarConstants';
+
+import { MONTHS_OF_YEAR } from '@/constants/calendarConstants';
+import { RangeEnum } from '@/types/calendarTypes';
 
 interface Props {
   eventRange: RangeEnum;
