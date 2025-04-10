@@ -9,4 +9,11 @@ export type Event = {
   date: Date;
   range: RangeEnum;
   title: string;
+  user: string;
+};
+
+export type Tab = {
+  id: string;
+  name: string;
+  users: string[];
 };

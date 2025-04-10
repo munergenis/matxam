@@ -1,9 +1,10 @@
-import CalendarApp from './components/CalendarApp/CalendarApp';
+import MainApp from './components/App/MainApp';
 
 const App = () => {
   return (
     <div className="container">
-      <CalendarApp />
+      <MainApp />
+      {/* <CalendarApp /> */}
     </div>
   );
 };

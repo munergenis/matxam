@@ -1,20 +1,31 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Event, RangeEnum } from '../types/calendarTypes';
 import { events } from '../data/events';
 import { isSameDay } from '../utils/dates';
 
 export const useEvents = (
+  users: string[],
+  currentUser: string,
   currentYear: number,
   currentMonth: number,
   selectedDate: Date,
   setSelectedDate: (date: Date) => void
 ) => {
+  const userEvents = useMemo(
+    () => events.filter((e) => users.some((u) => u === e.user)),
+    [users]
+  );
+
   const [showEventPopup, setShowEventPopup] = useState(false);
   // TODO GET request to backend (maybe using a useEffect)
-  const [storedEvents, setStoredEvents] = useState<Event[]>(events);
+  const [storedEvents, setStoredEvents] = useState<Event[]>(userEvents);
   const [eventRange, setEventRange] = useState(RangeEnum.Morning);
   const [eventTitle, setEventTitle] = useState('');
   const [editingEvent, setEditingEvent] = useState<Event | null>(null);
+
+  useEffect(() => {
+    setStoredEvents(userEvents);
+  }, [userEvents]);
 
   const closeEventPopup = () => {
     setShowEventPopup(false);
@@ -40,6 +51,7 @@ export const useEvents = (
       date: selectedDate,
       range: eventRange,
       title: eventTitle,
+      user: currentUser,
     };
 
     if (editingEvent) {

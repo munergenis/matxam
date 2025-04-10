@@ -2,11 +2,12 @@ import './Calendar.css';
 import {
   DAYS_OF_WEEK,
   MONTHS_OF_YEAR,
-} from '../../../../constants/calendarConstants';
-import { isSameDay } from '../../../../utils/dates';
-import { Event, RangeEnum } from '../../../../types/calendarTypes';
+} from '../../../../../../../constants/calendarConstants';
+import { isSameDay } from '../../../../../../../utils/dates';
+import { Event, RangeEnum } from '../../../../../../../types/calendarTypes';
 
 interface Props {
+  calendarName: string;
   currentYear: number;
   currentMonth: number;
   firstDayOfMonth: number;
@@ -17,8 +18,10 @@ interface Props {
   handlePrevMonth: () => void;
   handleNextMonth: () => void;
   handleDayClick: (day: number) => void;
+  resetCalendarPosition: () => void;
 }
 const Calendar = ({
+  calendarName,
   currentYear,
   currentMonth,
   firstDayOfMonth,
@@ -29,10 +32,11 @@ const Calendar = ({
   handlePrevMonth,
   handleNextMonth,
   handleDayClick,
+  resetCalendarPosition,
 }: Props) => {
   return (
     <div className="calendar">
-      <h1 className="heading">Calendar</h1>
+      <h1 className="heading">Calendar {calendarName}</h1>
 
       <div className="navigate-date">
         <h2 className="month">{MONTHS_OF_YEAR[currentMonth]},</h2>
@@ -40,6 +44,7 @@ const Calendar = ({
         <div className="buttons">
           {/* TODO change for real icons */}
           <button onClick={handlePrevMonth}>&lt;</button>
+          <button onClick={resetCalendarPosition}>R</button>
           <button onClick={handleNextMonth}>&gt;</button>
         </div>
       </div>
@@ -58,6 +63,12 @@ const Calendar = ({
         ))}
         {[...Array(daysInMonth).keys()].map((day) => (
           <div
+            className={`${
+              isSameDay(
+                currentDate,
+                new Date(currentYear, currentMonth, day + 1)
+              ) && 'current-day'
+            }`}
             key={day + 1}
             onClick={() => handleDayClick(day + 1)}
           >

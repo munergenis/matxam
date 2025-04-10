@@ -2,7 +2,7 @@ import './Event.css';
 import {
   Event as EventType,
   RangeEnum,
-} from '../../../../../../types/calendarTypes';
+} from '../../../../../../../../../types/calendarTypes';
 
 interface Props {
   event: EventType;
@@ -26,6 +26,7 @@ const Event = ({ event, handleSetEditingEvent, handleRemoveEvent }: Props) => {
     <div className={`event ${eventBackground}`}>
       <div className="event-date-wrapper">
         <div className="event-range">{event.range}</div>
+        <div className="event-range">{event.user}</div>
       </div>
       <div className="event-title">{event.title}</div>
       <div className="event-buttons">

@@ -12,8 +12,16 @@
   row-gap: 10px;
   margin-bottom: 20px;
 }
+.event-range-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.3rem;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
 
 .selected-date {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.3rem;
   font-size: 2rem;
   color: #78879e;
   margin-bottom: 2rem;

@@ -1,4 +1,4 @@
-import { RangeEnum } from '../../../../../../types/calendarTypes';
+import { RangeEnum } from '../../../../../../../../../types/calendarTypes';
 import './NewEventButton.css';
 
 interface Props {

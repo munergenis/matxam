@@ -1,9 +1,12 @@
 import './Events.css';
-import { Event as EventType, RangeEnum } from '../../../../types/calendarTypes';
+import {
+  Event as EventType,
+  RangeEnum,
+} from '../../../../../../../types/calendarTypes';
 import EventPopup from './components/EventPopup/EventPopup';
 import Event from './components/Event/Event';
 import NewEventButton from './components/NewEventButton/NewEventButton';
-import { getFormattedDate } from '../../../../utils/dates';
+import { getFormattedDate } from '../../../../../../../utils/dates';
 
 interface Props {
   showEventPopup: boolean;

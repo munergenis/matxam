@@ -21,6 +21,11 @@ export const useCalendar = () => {
     setCurrentMonth((pMonth) => (pMonth === 11 ? 0 : pMonth + 1));
     setCurrentYear((pYear) => (currentMonth === 11 ? pYear + 1 : pYear));
   };
+  const resetCalendarPosition = () => {
+    setCurrentMonth(currentDate.getMonth());
+    setCurrentYear(currentDate.getFullYear());
+    setSelectedDate(currentDate);
+  };
 
   return {
     currentYear,
@@ -32,5 +37,6 @@ export const useCalendar = () => {
     setSelectedDate,
     handlePrevMonth,
     handleNextMonth,
+    resetCalendarPosition,
   };
 };

@@ -24,3 +24,13 @@
   border-radius: 20rem;
   filter: blur(4rem);
 }
+
+.avatar {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+  background-color: white;
+  padding: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+}
