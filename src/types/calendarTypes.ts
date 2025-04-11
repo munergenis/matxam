@@ -17,3 +17,17 @@ export type Tab = {
   name: string;
   users: string[];
 };
+
+export interface Weekday {
+  long: string;
+  short: string;
+}
+
+// export interface CalendarInfo {
+//   currentYear: number;
+//   currentMonth: number;
+//   currentDay: number;
+//   currentWeekday: Weekday;
+//   numberOfDaysInMonth: number;
+//   firstWeekdayIndexOfMonth: number;
+// }

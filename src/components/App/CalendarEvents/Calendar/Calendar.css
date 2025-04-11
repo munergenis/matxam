@@ -103,22 +103,9 @@
 }
 .days > div.current-day {
   border-color: #ef9011;
+  box-shadow: 0 0 45px 0 rgba(239, 144, 17, 0.5);
 }
-
-span.current-day {
-  /* background-color: #ef9011; */
-  color: #ddd;
-  font-weight: bold;
-  /* border-radius: 50%; */
-  /* box-shadow: 0 0 1.5rem 1rem rgba(239, 144, 17, 0.3); */
-}
-
-span.selected-day {
-  /* background-color: #00a3ff; */
-  color: #00a3ff;
-  /* color: #2c3542; */
-  font-weight: bold;
-  border-radius: 50%;
-  /* text-shadow: 1px 1px 1px white; */
-  /* box-shadow: 0 0 1.5rem 1rem rgba(239, 144, 17, 0.3); */
+.days > div.selected-day {
+  border-color: #00a3ff;
+  box-shadow: 0 0 45px 0 rgba(0, 163, 255, 0.6);
 }

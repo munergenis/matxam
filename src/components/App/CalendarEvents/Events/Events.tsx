@@ -1,11 +1,11 @@
 import './Events.css';
 
 import { Event as EventType, RangeEnum } from '@/types/calendarTypes';
+import { getFormattedDate, getWeekdayFromDate } from '@/utils/dates';
 
 import Event from './Event/Event';
 import EventPopup from './EventPopup/EventPopup';
 import NewEventButton from './NewEventButton/NewEventButton';
-import { getFormattedDate } from '@/utils/dates';
 
 interface Props {
   showEventPopup: boolean;
@@ -40,10 +40,13 @@ const Events = ({
     (ev) => ev.range === RangeEnum.Afternoon
   );
   const nightEvents = storedEvents.filter((ev) => ev.range === RangeEnum.Night);
+  const weekday = getWeekdayFromDate(selectedDate);
 
   return (
     <div className="events">
-      <div className="selected-date">{getFormattedDate(selectedDate)}</div>
+      <div className="selected-date">{`${weekday.short} ${getFormattedDate(
+        selectedDate
+      )}`}</div>
 
       {showEventPopup && (
         <EventPopup

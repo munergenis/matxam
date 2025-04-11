@@ -7,10 +7,8 @@ import { isSameDay } from '@/utils/dates';
 export const useEvents = (
   users: string[],
   currentUser: string,
-  currentYear: number,
   currentMonth: number,
-  selectedDate: Date,
-  setSelectedDate: (date: Date) => void
+  selectedDate: Date
 ) => {
   const userEvents = useMemo(
     () => events.filter((e) => users.some((u) => u === e.user)),
@@ -30,12 +28,6 @@ export const useEvents = (
 
   const closeEventPopup = () => {
     setShowEventPopup(false);
-  };
-
-  const handleDayClick = (day: number) => {
-    const clickedDate = new Date(currentYear, currentMonth, day);
-
-    setSelectedDate(clickedDate);
   };
 
   const handleCreateEvent = (range: RangeEnum) => {
@@ -76,13 +68,11 @@ export const useEvents = (
       setShowEventPopup(true);
       setEventRange(event.range);
       setEventTitle(event.title);
-      setSelectedDate(event.date);
     } else {
       setEditingEvent(null);
       setShowEventPopup(false);
       setEventRange(RangeEnum.Morning);
       setEventTitle('');
-      setSelectedDate(new Date());
     }
   };
 
@@ -108,7 +98,6 @@ export const useEvents = (
     // TODO: replace storedEvents for dailyEvents
     storedEvents: dailyEvents,
     monthEvents,
-    handleDayClick,
     setEventTitle,
     handleCreateEvent,
     handleSubmitEvent,

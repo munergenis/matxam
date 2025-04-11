@@ -3,7 +3,7 @@ import './CalendarApp.css';
 import Calendar from './Calendar/Calendar';
 import Events from './Events/Events';
 import { Tab } from '@/types/calendarTypes';
-import { useCalendar } from '@/hooks/useCalendar';
+import { useCalendarEventsStore } from '@/store/calendarEventsStore';
 import { useEvents } from '@/hooks/useEvents';
 
 interface Props {
@@ -11,18 +11,9 @@ interface Props {
   activeTab: Tab;
 }
 const CalendarApp = ({ activeTab, currentUser }: Props) => {
-  const {
-    currentYear,
-    currentMonth,
-    currentDate,
-    selectedDate,
-    daysInMonth,
-    firstDayOfMonth,
-    setSelectedDate,
-    handlePrevMonth,
-    handleNextMonth,
-    resetCalendarPosition,
-  } = useCalendar();
+  const calendarCurrentMonth =
+    useCalendarEventsStore.use.calendarCurrentMonth();
+  const selectedDate = useCalendarEventsStore.use.selectedDate();
 
   const {
     showEventPopup,
@@ -30,7 +21,6 @@ const CalendarApp = ({ activeTab, currentUser }: Props) => {
     eventTitle,
     storedEvents,
     monthEvents,
-    handleDayClick,
     setEventTitle,
     handleCreateEvent,
     handleSubmitEvent,
@@ -40,27 +30,15 @@ const CalendarApp = ({ activeTab, currentUser }: Props) => {
   } = useEvents(
     activeTab.users,
     currentUser,
-    currentYear,
-    currentMonth,
-    selectedDate,
-    setSelectedDate
+    calendarCurrentMonth,
+    selectedDate
   );
 
   return (
     <div className="calendar-app">
       <Calendar
         calendarName={activeTab.name}
-        currentDate={currentDate}
-        currentMonth={currentMonth}
-        currentYear={currentYear}
-        daysInMonth={daysInMonth}
-        firstDayOfMonth={firstDayOfMonth}
-        selectedDate={selectedDate}
         monthEvents={monthEvents}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
-        handleDayClick={handleDayClick}
-        resetCalendarPosition={resetCalendarPosition}
       />
       <Events
         showEventPopup={showEventPopup}
